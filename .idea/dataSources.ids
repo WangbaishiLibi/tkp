@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - tkp@120.78.13.20" uuid="00057414-299c-4444-9526-810f055b1bb6">
+    <database-info product="MySQL" version="5.5.5-10.1.26-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="tkp"/>
+    <table name="edu_paper_group" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="department_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="edu_que_group_question" schema="" catalog="tkp" type="TABLE">
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="question_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="group_id,question_id"/>
+    </table>
+    <table name="edu_question" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH6aKY"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="5YaF5a65"/>
+      <column name="explanation" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="6Kej6YeK"/>
+      <column name="option1" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6YCJ6aG5MQ=="/>
+      <column name="option2" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6YCJ6aG5Mg=="/>
+      <column name="option3" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6YCJ6aG5Mw=="/>
+      <column name="option4" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6YCJ6aG5NA=="/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6aKY5Z6L"/>
+      <column name="answer" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="566A562U6aKY562U5qGI"/>
+      <column name="anskey" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" def="Jyc=" remarks="5Yik5pat44CB6YCJ5oup562U5qGI"/>
+      <column name="article_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5paH56ug5p2l5rqQ"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YiG57G7"/>
+      <column name="tag" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH562+"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="edu_question_group" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5aSn6aKY57G75Z6L"/>
+      <column name="paper_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="edu_test_paper" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="paper_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="duration" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="6ICD6K+V5pe26ZW/77yI5Y2V5L2N77ya5YiG77yJ"/>
+      <column name="intro" sqlType="VARCHAR" precision="512" scale="0" nullable="true" jdbcType="12" remarks="5LuL57uN"/>
+      <column name="base_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="edu_user_answer" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="question_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="paper_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="answer" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="566A562U6aKY562U5qGI"/>
+      <column name="anskey" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" def="Jyc=" remarks="5Yik5pat44CB6YCJ5oup562U5qGI"/>
+      <column name="right" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7" remarks="5piv5ZCm5q2j56Gu"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tkp_article" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH6aKY"/>
+      <column name="abstr" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12" remarks="5pGY6KaB"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5YaF5a65"/>
+      <column name="tag" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH562+"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YiG57G7"/>
+      <column name="catalog_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="55uu5b2V"/>
+      <column name="views" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="likes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tkp_book" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="abstr" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12"/>
+      <column name="doc_path" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5rqQ5paH5qGj6Lev5b6E"/>
+      <column name="url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Zyo57q/5paH5qGj6Lev5b6E"/>
+      <column name="tag" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tkp_catalog" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="abstr" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tag" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH562+"/>
+      <column name="seq" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5bqP5Y+3"/>
+      <column name="type" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12" remarks="57yW44CB56ug44CB6IqC44CB5p2h44CB55uu"/>
+      <column name="parent_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="book_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tkp_dictionary" schema="" catalog="tkp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH562+44CB55+l6K+G6IqC54K544CB55m+56eR5YWz6ZSu6K+N"/>
+      <column name="abstr" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12" remarks="5pGY6KaB"/>
+      <column name="origin" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5p2l5rqQ"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6K+N57G75Z6L77ya5pys5Zyw44CB6ZmE5b2V44CB55m+56eR"/>
+      <column name="weight" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5p2D6YeN"/>
+      <column name="query_times" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5pCc57Si5qyh5pWw"/>
+      <column name="link" sqlType="VARCHAR" precision="512" scale="0" nullable="true" jdbcType="12" remarks="5YaF5a656ZO+5o6l"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="v_tkp_article" schema="" catalog="tkp" type="VIEW">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH6aKY"/>
+      <column name="abstr" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12" remarks="5pGY6KaB"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5YaF5a65"/>
+      <column name="tag" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5qCH562+"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YiG57G7"/>
+      <column name="catalog_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="55uu5b2V"/>
+      <column name="views" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="likes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="able" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="lev1_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lev1_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lev2_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lev2_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lev3_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lev3_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+    </table>
+  </data-source>
+</component>

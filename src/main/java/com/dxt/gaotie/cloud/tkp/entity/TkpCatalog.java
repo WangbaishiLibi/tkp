@@ -1,0 +1,131 @@
+package com.dxt.gaotie.cloud.tkp.entity;
+
+import javax.persistence.*;
+
+/**
+ * Created by admin on 2018/10/21.
+ */
+@Entity
+@Table(name = "tkp_catalog", schema = "", catalog = "tkp")
+public class TkpCatalog {
+    private int id;
+    private String title;
+    private String abstr;
+    private String tag;
+    private Integer seq;
+    private String type;
+    private Integer parentId;
+    private Integer bookId;
+
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Basic
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Basic
+    @Column(name = "abstr")
+    public String getAbstr() {
+        return abstr;
+    }
+
+    public void setAbstr(String abstr) {
+        this.abstr = abstr;
+    }
+
+    @Basic
+    @Column(name = "tag")
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    @Basic
+    @Column(name = "seq")
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
+    @Basic
+    @Column(name = "type")
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Basic
+    @Column(name = "parent_id")
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
+    }
+
+    @Basic
+    @Column(name = "book_id")
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TkpCatalog that = (TkpCatalog) o;
+
+        if (id != that.id) return false;
+        if (abstr != null ? !abstr.equals(that.abstr) : that.abstr != null) return false;
+        if (bookId != null ? !bookId.equals(that.bookId) : that.bookId != null) return false;
+        if (parentId != null ? !parentId.equals(that.parentId) : that.parentId != null) return false;
+        if (seq != null ? !seq.equals(that.seq) : that.seq != null) return false;
+        if (tag != null ? !tag.equals(that.tag) : that.tag != null) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (abstr != null ? abstr.hashCode() : 0);
+        result = 31 * result + (tag != null ? tag.hashCode() : 0);
+        result = 31 * result + (seq != null ? seq.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (parentId != null ? parentId.hashCode() : 0);
+        result = 31 * result + (bookId != null ? bookId.hashCode() : 0);
+        return result;
+    }
+}
