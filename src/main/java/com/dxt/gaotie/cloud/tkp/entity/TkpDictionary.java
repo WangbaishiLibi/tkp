@@ -22,6 +22,7 @@ public class TkpDictionary {
     private Boolean able;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;

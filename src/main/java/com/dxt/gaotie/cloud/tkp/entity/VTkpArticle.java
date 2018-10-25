@@ -151,6 +151,7 @@ public class VTkpArticle {
     }
 
     @ManyToOne
+    @JoinColumn(name = "book_id")
     public TkpBook getBook() {
         return book;
     }
