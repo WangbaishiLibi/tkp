@@ -2,6 +2,7 @@ package com.dxt.gaotie.cloud.tkp.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by admin on 2018/10/21.
@@ -13,12 +14,14 @@ public class EduTestPaper {
     private String paperName;
     private int duration;
     private String intro;
-    private Integer baseId;
     private Boolean able;
+    private EduPaperGroup paperGroup;
+    private List<EduQuestionGroup>  questionGroups;
     private Timestamp createTime;
     private Timestamp updateTime;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -58,15 +61,6 @@ public class EduTestPaper {
         this.intro = intro;
     }
 
-    @Basic
-    @Column(name = "base_id")
-    public Integer getBaseId() {
-        return baseId;
-    }
-
-    public void setBaseId(Integer baseId) {
-        this.baseId = baseId;
-    }
 
     @Basic
     @Column(name = "able")
@@ -78,8 +72,29 @@ public class EduTestPaper {
         this.able = able;
     }
 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id")
+    public EduPaperGroup getPaperGroup() {
+        return paperGroup;
+    }
+
+    public void setPaperGroup(EduPaperGroup paperGroup) {
+        this.paperGroup = paperGroup;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "paper_id")
+    public List<EduQuestionGroup> getQuestionGroups() {
+        return questionGroups;
+    }
+
+    public void setQuestionGroups(List<EduQuestionGroup> questionGroups) {
+        this.questionGroups = questionGroups;
+    }
+
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -89,7 +104,7 @@ public class EduTestPaper {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
@@ -108,7 +123,6 @@ public class EduTestPaper {
         if (duration != that.duration) return false;
         if (id != that.id) return false;
         if (able != null ? !able.equals(that.able) : that.able != null) return false;
-        if (baseId != null ? !baseId.equals(that.baseId) : that.baseId != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
         if (intro != null ? !intro.equals(that.intro) : that.intro != null) return false;
         if (paperName != null ? !paperName.equals(that.paperName) : that.paperName != null) return false;
@@ -123,7 +137,6 @@ public class EduTestPaper {
         result = 31 * result + (paperName != null ? paperName.hashCode() : 0);
         result = 31 * result + duration;
         result = 31 * result + (intro != null ? intro.hashCode() : 0);
-        result = 31 * result + (baseId != null ? baseId.hashCode() : 0);
         result = 31 * result + (able != null ? able.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         result = 31 * result + (updateTime != null ? updateTime.hashCode() : 0);

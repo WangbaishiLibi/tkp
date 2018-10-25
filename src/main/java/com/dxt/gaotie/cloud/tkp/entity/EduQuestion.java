@@ -178,7 +178,7 @@ public class EduQuestion {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -188,7 +188,7 @@ public class EduQuestion {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }

@@ -10,16 +10,17 @@ import java.sql.Timestamp;
 @Table(name = "edu_user_answer", schema = "", catalog = "tkp")
 public class EduUserAnswer {
     private int id;
-    private Integer questionId;
     private Integer paperId;
     private Integer userId;
     private String answer;
     private String anskey;
     private Boolean right;
+    private EduQuestion question;
     private Timestamp createTime;
     private Timestamp updateTime;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -29,14 +30,14 @@ public class EduUserAnswer {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "question_id")
-    public Integer getQuestionId() {
-        return questionId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    public EduQuestion getQuestion() {
+        return question;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setQuestion(EduQuestion question) {
+        this.question = question;
     }
 
     @Basic
@@ -90,7 +91,7 @@ public class EduUserAnswer {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -100,7 +101,7 @@ public class EduUserAnswer {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
@@ -121,7 +122,6 @@ public class EduUserAnswer {
         if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
         if (paperId != null ? !paperId.equals(that.paperId) : that.paperId != null) return false;
-        if (questionId != null ? !questionId.equals(that.questionId) : that.questionId != null) return false;
         if (right != null ? !right.equals(that.right) : that.right != null) return false;
         if (updateTime != null ? !updateTime.equals(that.updateTime) : that.updateTime != null) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
@@ -132,7 +132,6 @@ public class EduUserAnswer {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (questionId != null ? questionId.hashCode() : 0);
         result = 31 * result + (paperId != null ? paperId.hashCode() : 0);
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (answer != null ? answer.hashCode() : 0);

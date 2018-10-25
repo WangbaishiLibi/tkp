@@ -16,13 +16,14 @@ public class TkpArticle {
     private String tag;
     private Integer categoryId;
     private Integer catalogId;
-    private Integer views;
-    private Integer likes;
+    private Integer views = 0;
+    private Integer likes = 0;
     private Timestamp createTime;
     private Timestamp updateTime;
     private Boolean able;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -113,7 +114,7 @@ public class TkpArticle {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -123,7 +124,7 @@ public class TkpArticle {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }

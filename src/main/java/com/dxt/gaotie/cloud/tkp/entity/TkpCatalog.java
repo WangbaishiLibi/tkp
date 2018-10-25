@@ -18,6 +18,7 @@ public class TkpCatalog {
     private Integer bookId;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;

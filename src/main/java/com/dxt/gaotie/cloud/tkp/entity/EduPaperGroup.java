@@ -17,6 +17,7 @@ public class EduPaperGroup {
     private Timestamp updateTime;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -57,7 +58,7 @@ public class EduPaperGroup {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -67,7 +68,7 @@ public class EduPaperGroup {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }

@@ -16,11 +16,12 @@ public class VTkpArticle {
     private String tag;
     private Integer categoryId;
     private Integer catalogId;
-    private Integer views;
-    private Integer likes;
+    private Integer views = 0;
+    private Integer likes = 0;
     private Timestamp createTime;
     private Timestamp updateTime;
-    private Boolean able;
+    private Boolean able = true;
+    private TkpBook book;
     private String lev1Title;
     private int lev1Id;
     private String lev2Title;
@@ -120,7 +121,7 @@ public class VTkpArticle {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -130,7 +131,7 @@ public class VTkpArticle {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }

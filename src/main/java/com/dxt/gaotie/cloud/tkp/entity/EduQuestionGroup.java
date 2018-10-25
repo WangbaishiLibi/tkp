@@ -1,6 +1,7 @@
 package com.dxt.gaotie.cloud.tkp.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by admin on 2018/10/21.
@@ -12,8 +13,10 @@ public class EduQuestionGroup {
     private String groupName;
     private int type;
     private Integer paperId;
+    private List<EduQuestion> questions;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -51,6 +54,16 @@ public class EduQuestionGroup {
 
     public void setPaperId(Integer paperId) {
         this.paperId = paperId;
+    }
+
+    @ManyToMany
+    @JoinTable(name="edu_que_group_question",joinColumns={@JoinColumn(name="group_id")},inverseJoinColumns={@JoinColumn(name="question_id")})
+    public List<EduQuestion> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<EduQuestion> questions) {
+        this.questions = questions;
     }
 
     @Override
