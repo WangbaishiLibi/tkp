@@ -150,6 +150,15 @@ public class VTkpArticle {
         this.able = able;
     }
 
+    @ManyToOne
+    public TkpBook getBook() {
+        return book;
+    }
+
+    public void setBook(TkpBook book) {
+        this.book = book;
+    }
+
     @Basic
     @Column(name = "lev1_title")
     public String getLev1Title() {
