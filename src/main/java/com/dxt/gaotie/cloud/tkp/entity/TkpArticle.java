@@ -1,25 +1,20 @@
 package com.dxt.gaotie.cloud.tkp.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 /**
  * Created by admin on 2018/10/21.
  */
 @Entity
 @Table(name = "tkp_article", schema = "", catalog = "tkp")
-public class TkpArticle {
-    private int id;
-    private String title;
-    private String abstr;
+public class TkpArticle extends SearchModel{
+
     private String content;
     private String tag;
     private Integer categoryId;
     private Integer catalogId;
     private Integer views = 0;
     private Integer likes = 0;
-    private Timestamp createTime;
-    private Timestamp updateTime;
     private Boolean able;
 
     @Id
@@ -51,6 +46,17 @@ public class TkpArticle {
 
     public void setAbstr(String abstr) {
         this.abstr = abstr;
+    }
+
+    @Transient
+    @Override
+    public String getLink() {
+        return "/article/" + id;
+    }
+
+    @Override
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Basic
@@ -113,25 +119,7 @@ public class TkpArticle {
         this.likes = likes;
     }
 
-    @Basic
-    @Column(name = "create_time", insertable = false, updatable = false)
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    @Basic
-    @Column(name = "update_time", insertable = false, updatable = false)
-    public Timestamp getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Basic
     @Column(name = "able")

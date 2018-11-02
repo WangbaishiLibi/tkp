@@ -7,15 +7,23 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "tkp_catalog", schema = "", catalog = "tkp")
-public class TkpCatalog {
-    private int id;
-    private String title;
-    private String abstr;
+public class TkpCatalog extends SearchModel{
+
     private String tag;
-    private Integer seq;
+    private Integer seq = 0;
     private String type;
     private Integer parentId;
     private Integer bookId;
+
+    public TkpCatalog() {
+    }
+
+    public TkpCatalog(String title, String type, Integer bookId, Integer parentId) {
+        this.title = title;
+        this.type = type;
+        this.bookId = bookId;
+        this.parentId = parentId;
+    }
 
     @Id
     @GeneratedValue
@@ -46,6 +54,17 @@ public class TkpCatalog {
 
     public void setAbstr(String abstr) {
         this.abstr = abstr;
+    }
+
+    @Transient
+    @Override
+    public String getLink() {
+        return "/catalog/" + id;
+    }
+
+    @Override
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Basic

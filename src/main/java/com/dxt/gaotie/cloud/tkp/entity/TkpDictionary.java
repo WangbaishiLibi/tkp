@@ -8,15 +8,12 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "tkp_dictionary", schema = "", catalog = "tkp")
-public class TkpDictionary {
-    private int id;
-    private String title;
-    private String abstr;
+public class TkpDictionary extends SearchModel{
+
     private String origin;
     private Integer type;
     private Integer weight;
     private Integer queryTimes;
-    private String link;
     private Timestamp createTime;
     private Timestamp updateTime;
     private Boolean able;
