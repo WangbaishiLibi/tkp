@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface DictionaryRepository extends JpaRepository<TkpDictionary, Integer>{
 
-    @Query("select d from TkpDictionary d where d.title like ?1")
+    @Query("select d from TkpDictionary d where d.title like ?1 order by d.weight desc, d.updateTime desc ")
     public List<TkpDictionary> findByTitle(String title);
 
 }
