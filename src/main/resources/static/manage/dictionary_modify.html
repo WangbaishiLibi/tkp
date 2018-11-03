@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<link rel="stylesheet"  href="../res/dist/css/summernote.css"  />
+	<script type="text/javascript" src="../res/dist/js/summernote.js"></script>
+	<style>
+	        .content {margin: 5px;}
+	        #modifyModal .div_option{display:none;}
+
+	</style>
+</head>
+<body>
+
+	<div class="content">
+
+		<form id="modifyModal" name="modify" class="form-horizontal">
+			<input type="hidden" name="tbname" value="dictionary" />
+			<input type="hidden" name="_method" />
+			<input type="hidden" name="cnt"/>
+			<div class="modal-header">
+				<h4 class="modal-title">词典操作</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">标题</label>
+					<div class="col-sm-10">
+						<input type="text" name="title" required lay-verify="required"
+							placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">简介</label>
+					<div class="col-sm-10">
+						<div id="editorDiv"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">类型</label>
+					<div class="col-sm-10">
+						<select name="type" class="layui-input">
+							<option value="" selected="selected">无</option>
+							<option value="book">本地书目</option>
+							<option value="link">百科词条</option>
+							<option value="chapter">本地书目章节</option>
+						</select>
+					</div>
+				</div>
+				<input type="hidden" name="tabname" value="">
+				<div class="form-group div_option div_book">
+					<label class="col-sm-2 control-label">书目</label>
+					<div class="col-sm-10">
+						<select name="" class="layui-input">
+						</select>
+					</div>
+				</div>
+				<div class="form-group div_option div_chapter">
+					<label class="col-sm-2 control-label">章节</label>
+					<div class="col-sm-10">
+						<select name="" class="layui-input">
+						</select>
+					</div>
+				</div>
+				<div class="form-group div_option div_link">
+					<label class="col-sm-2 control-label">链接</label>
+					<div class="col-sm-10">
+						<input type="text" name="link" required lay-verify="required"
+							   placeholder="请粘贴地址" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">来源</label>
+					<div class="col-sm-10">
+						<input type="text" name="origin" required lay-verify="required"
+							   placeholder="请输入词条来源" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">序号</label>
+					<div class="col-sm-10">
+						<input type="number" name="seq" required lay-verify="required" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default back">返回</button>
+				<button type="button" class="btn btn-primary save">保存</button>
+			</div>
+		</form>
+
+	</div>
+
+
+
+
+
+	<script type="text/javascript" src="../res/dist/js/dictionary_modify.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#editorDiv").summernote({
+				height : 100,
+				callbacks: {
+					onImageUpload : function(files, editor, welEditable) {
+						sendFile(files[0], editor, welEditable);
+					}
+				}
+			});
+			
+			function sendFile(file) {
+				var data = new FormData();
+				data.append("img", file);
+				$.ajax({
+					url : "../res/imgUpload",
+			        type : "POST",
+			        data : data,
+					cache : false,
+					contentType : false,
+					processData : false,
+					success : function(data) {
+						if(data.res){
+							var imgNode = document.createElement("img");
+							imgNode.src = data.msg;
+							$("#editorDiv").summernote('insertNode', imgNode);
+						}
+					}
+				});
+			}
+		})
+	</script>
+
+</body>
+</html>

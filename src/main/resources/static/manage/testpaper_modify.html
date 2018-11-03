@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<style>
+			.row { margin: 0;  }
+			#modifyModal .line-control{width:10%; display:inline;}
+	</style>
+</head>
+<body>
+
+	<div class="content">
+
+		<form id="modifyModal" name="modify" class="form-horizontal">
+			<input type="hidden" name="tbname" value="TestPaper">
+			<input type="hidden" name="_method">
+			<div class="modal-header">
+				<h4 class="modal-title">试卷操作</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">试卷名</label>
+					<div class="col-sm-10">
+						<input type="text" name="paperName" required lay-verify="required"
+							placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">时长</label>
+					<div class="col-sm-10">
+						<select name="duration" class="form-control">
+							<option value="60">60分钟</option>
+							<option value="80">80分钟</option>
+							<option value="100">100分钟</option>
+							<option selected="selected" value="120">120分钟</option>
+							<option value="160">160分钟</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">随机题目</label>
+					<div class="col-sm-10">
+						单选题<input type="text" name="single_choice_cnt" class="form-control line-control"/>
+						多选题<input type="text" name="multiple_choice_cnt"class="form-control line-control" />
+						判断题<input type="text" name="true_false_cnt" class="form-control line-control"/>
+						简答题<input type="text" name="text_answer_cnt" class="form-control line-control"/>
+						重新随机<input type="checkbox" name="resetQue" style="width:20px; height: 20px;"/>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">试卷库</label>
+					<div class="col-sm-10">
+						<select name="paperbase_id" class="form-control"></select>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default back">返回</button>
+				<button type="button" class="btn btn-primary save">保存</button>
+			</div>
+		</form>
+
+	</div>
+
+
+
+
+
+	<script type="text/javascript" src="../res/dist/js/testpaper_modify.js"></script>
+
+
+</body>
+</html>

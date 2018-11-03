@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="../res/dist/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../res/dist/bootstrap/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../res/dist/css/fileinput.min.css"/>
+    <link rel="stylesheet" href="../res/dist/css/table-plg1.0.css" />
+	<link rel="stylesheet" href="../res/dist/css/layer.css" />
+	<link rel="stylesheet" href="../res/dist/css/layui.css"  media="all">
+	<link rel="stylesheet" href="../res/dist/jstree/themes/default/style.min.css"/>
+    <script type="text/javascript" src="../res/dist/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../res/dist/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../res/dist/jstree/jstree.min.js"></script>
+    <script type="text/javascript" src="../res/dist/js/table-plg1.0.js"></script>
+    <script type="text/javascript" src="../res/dist/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="../res/dist/js/layer.js"></script>
+    <script type="text/javascript" src="../res/dist/js/layui.js"></script>
+    <script type="text/javascript" src="../res/dist/js/WebUtil.js"></script>
+    <style type="text/css">
+		ul { user-select: none; list-style: none; cursor:pointer; padding-left:0px;}
+		ul > li{cursor:pointer;}
+		
+		
+		.head{height:60px;}
+		.left_col{background: wheat; padding: 0px;}
+		.left_col .nav .nav-toggle{font-weight:bold; font-size: 16px;}
+		.left_col .nav .glyphicon{float:right;}
+		.left_col .nav a { color: #333; display: block; width: 100%; text-align: center; padding: 10px; font-family: "黑体";  }
+		.left_col .nav .sub_nav .active{background:#f0ad4e;}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".nav-toggle").click(function () {
+                $(this).find(".glyphicon").toggleClass("glyphicon-chevron-down").toggleClass("glyphicon-chevron-left");
+                var nav = $(this).next(".sub_nav");
+                nav.toggleClass("active")
+                if (nav.hasClass("active"))
+                    nav.slideDown();
+                else nav.slideUp();
+            });
+            $(".nav_btn").click(function () {
+                $(".nav_btn").removeClass("active");
+                $(this).addClass("active");
+                var nav = $("#path_nav").find(".breadcrumb");
+                nav.empty();
+                nav.append("<li><a>主页</a></li>");
+                nav.append("<li><a>" + $(this).parent().parent().prev(".nav-toggle").text() + "</a></li>");
+                nav.append("<li><a>" + $(this).text() + "</a></li>");
+            });
+            
+        //    tab('question');
+        })
+
+        function tab(page, tbName, fun){
+        	page = page + ".html";
+        	if(tbName){
+        		$("#page_content").load(page, function(){
+        			initTableData(tbName);
+        		});
+        	}else{
+        		if(typeof fun == "function")
+        			$("#page_content").load(page, fun());
+        		else
+        			$("#page_content").load(page);
+        	}
+        }
+
+    </script>
+</head>
+<body>
+	<div class="container-fluid">
+	    <div class="head">
+	        <div class="logo"></div>
+	        <div class="company">后台管理系统</div>
+	        <div style="float:right"><a href="../logout">退出</a></div>
+	    </div>
+	    <div class="col-md-2 left_col">
+	        <ul class="nav">
+	            <li>
+	                <a class="nav-toggle">前台管理<span class="glyphicon glyphicon-chevron-down"></span></a>
+	                <ul class="sub_nav active">
+	                    <li onclick="tab('question')"><a class="nav_btn">题库管理</a></li>
+	                    <li onclick="tab('entry')"><a class="nav_btn">规章条例</a></li>
+	                    <li onclick="tab('tree')"><a class="nav_btn">知识分类</a></li>
+						<li onclick="tab('temp_list', 'PaperBase')"><a class="nav_btn">试卷库管理</a></li>
+						<li onclick="tab('testpaper')"><a class="nav_btn">试卷管理</a></li>
+						<li onclick="tab('dictionary')"><a class="nav_btn">词典管理</a></li>
+	                </ul>
+	            </li>
+	            <li>
+	                <a class="nav-toggle ">后台管理<span class="glyphicon glyphicon-chevron-down"></span></a>
+	                <ul class="sub_nav active">
+	                    <li onclick="tab('temp_list', 'u_user')"><a class="nav_btn">用户管理</a></li>
+	                </ul>
+	            </li>
+	        </ul>
+	    </div>
+	    <div class="col-md-10 right_col">
+	        <div id="path_nav">
+	            <ol class="breadcrumb">
+	            </ol>
+	        </div>
+	        <div id="page_content" class="content"></div>
+	    </div>
+	</div>
+</body>
+</html>

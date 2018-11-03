@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="../res/dist/jstree/themes/default/style.min.css"/>
+    <script type="text/javascript" src="../res/dist/jstree/jstree.min.js"></script>
+    <script type="text/javascript" src="../res/dist/js/entry.js"></script>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="col-md-3 ">
+			<div id="ruler_tree"></div>
+		</div>
+	    <div class="col-md-9 ">
+			<!-- 附加功能区 -->
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-sm-10 col-sm-offset-2">
+					<div class="form-inline">
+						<div class="form-group">
+							<div class="input-group">
+								<span>查询列</span>
+							</div>
+							<div class="input-group">
+								<select id="btn_query_col" class="form-control"></select>
+							</div>
+							<div class="input-group">
+								<input id="btn_query_val" type="text" class="form-control" placeholder="查询关键字">
+				      	<span class="input-group-btn">
+				        	<button id="btn_query" class="btn btn-default glyphicon glyphicon-search"
+									type="button"></button>
+				      	</span>
+							</div>
+						</div>
+						<button id="btn_add" class="btn btn-primary" data-toggle="modal" data-target="#addModal">新增</button>
+					</div>
+				</div>
+			</div>
+	    	<!-- 表格区 -->
+		    <table id="tab_entry" class="table table-style1">
+		        <thead></thead>
+		        <tbody></tbody>
+		        <tfoot></tfoot>
+		    </table>
+	    </div>
+	</div>
+
+	
+	<script type="text/javascript">
+
+	</script>
+</body>
+</html>

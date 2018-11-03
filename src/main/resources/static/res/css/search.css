@@ -1,0 +1,22 @@
+
+
+#welcome_info {	background: #1E5B94;	color: #fff;	text-align: center;		padding: 10px 0;	}
+.content .key-types{width:80%; margin: 10px auto;}
+.content .key-types > span{padding: 0px 20px; cursor:pointer;}
+.content .key-types .active{color: deepskyblue;}
+
+.get-title {	font-size: 200%;	border: 2px solid #fff;	padding: 20px;	display: inline-block;	}
+
+#result_list {	text-align: left;	}
+#result_list .am-list-item-text{max-height: none; display: block; }
+#result_list .am-list-item-text *{font-size: 1.6rem !important;  font-family: "微软雅黑" !important;  color: #555 !important; line-height: 150% !important;}
+#result_list .am-list-news-ft{font-size: 12px; color: rgba(255, 166, 0, 0.76);}
+#result_list .am-list-item-hd{text-decoration: underline;}
+#result_list .title label{font-weight: normal; text-decoration: underline;}
+#result_list .title em{font-weight: normal; text-decoration: underline;}
+#result_list .search-key{color: red !important; display: inline;font-style: normal;}
+
+#main .am-tabs-bd{border: none;}
+#main .am-tabs-bd .am-tab-panel{padding: 0;}
+#detail_title{width: 80%;}
+#detail_content{color:black; text-align: left; text-indent: 32px; overflow-x: scroll;}

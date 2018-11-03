@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="../res/dist/jstree/themes/default/style.min.css"/>
+    <script type="text/javascript" src="../res/dist/jstree/jstree.min.js"></script>
+    <script type="text/javascript" src="../res/js/tree.js"></script>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="col-md-3 ">
+			<div id="ruler_tree"></div>
+		</div>
+	    <div class="col-md-9 ">
+	    	<!-- 表格区 -->
+		    <table id="tab_category" class="table table-style1">
+		        <thead></thead>
+		        <tbody></tbody>
+		        <tfoot></tfoot>
+		    </table>
+	    </div>
+	</div>
+	
+	
+	<div id="cateForm" style="display:none">
+		<form  class="form-horizontal">
+			<label class="col-sm-3 control-label">类别名</label>
+		    <div class="col-sm-9">
+		      <input class="form-control" name="name" >
+		    </div>
+		    <label class="col-sm-3 control-label">显示名</label>
+		    <div class="col-sm-9">
+		      <input class="form-control" name="display" >
+		    </div>
+		    <input type="hidden" name="id" />
+		    <input type="hidden" name="parent_id" />
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		var tab_category;
+		$(function(){
+			var selected = $('#ruler_tree').jstree(true).get_selected(true);
+			var parentId = 0;
+			if(selected.length>0)	parentId = 	selected[0].id;
+			var tbname = "category";
+			tab_category = new DataTable({
+				tbname : tbname,
+				tabledom : $("#tab_category"),
+				ajax : {
+					url:"../table/entityList/get/" + tbname,
+					data:{queryCol:"parent_id", queryVal:"0"}
+				},
+				columns : [
+	       			{name : "编号", field : "id"},       
+	    			{name : "类别名", field : "name"},
+	    			{name : "显示名", field : "display"},
+	    			{name : "父级类", field : "display1"}
+	    		],
+				page : {
+					page_index : 1,		
+					page_total : 10	//每页记录数
+				},
+				attribute : {
+					foreign:{
+						primaryColumn:"parent_id",
+						foreignTable:"category",
+						foreignColumn:"id",
+						showField:"display"
+					}
+				}
+			});
+		})
+	</script>
+</body>
+</html>

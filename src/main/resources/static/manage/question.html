@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+   
+    <style>
+        .row { margin: 0;  }
+        .content {margin: 5px;}
+        #modifyModal .line-control{width:49%; display:inline;}
+        #modifyModal .select-input{position: relative; left: -172px; width: 150px;}
+    </style>
+</head>
+<body>
+
+<div class="content">
+
+    <!-- 附加功能区 -->
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-10 col-sm-offset-2">
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span>查询列</span>
+                    </div>
+                    <div class="input-group">
+                        <select id="btn_query_col" class="form-control"></select>
+                    </div>
+                    <div class="input-group">
+                        <input id="btn_query_val" type="text" class="form-control" placeholder="查询关键字">
+				      	<span class="input-group-btn">
+				        	<button id="btn_query" class="btn btn-default glyphicon glyphicon-search"
+                                    type="button"></button>
+				      	</span>
+                    </div>
+                </div>
+                <button id="btn_add" class="btn btn-primary" data-toggle="modal" data-target="#addModal">新增</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表格区 -->
+    <table id="table" class="table table-style1">
+        <thead></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
+
+
+
+
+<script type="text/javascript" src="../res/dist/js/question.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+	})
+
+</script>
+
+</body>
+</html>

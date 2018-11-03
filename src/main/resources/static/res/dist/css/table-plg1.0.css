@@ -1,0 +1,35 @@
+/*
+ * table-plug1.0.css
+ * require : bootstrap
+ */
+
+table > thead > tr > th,
+table > tbody > tr > td{text-align : center; vertical-align: middle !important; max-width: 200px; word-wrap: break-word;}
+
+table > thead > tr > th{color: white; border: 1px solid #4CAF50; user-select:none;}
+
+.table-style1{width:100%;max-width:100%;}
+.table-style1 > thead > tr{background : #0262B5;}
+
+.table-style1 > tbody > tr:nth-child(odd){background : #d9edf7;}
+
+.table-style1 > tbody > tr:hover{background : #DFF0D8;}
+
+.table-style1 > tbody > tr > td span{cursor: pointer}
+.table-style1 > tbody > tr > td span:hover{color: blue; border-bottom: 1px solid blue;}
+
+
+.table > tfoot > tr > td .info{margin: 20px 0px; line-height: 34px; color: #337ab7;}
+
+/*
+ * 部分组件校正
+ */
+#btn_query{margin-top: -1px;}
+table > thead > tr > .sort_both{min-width: 80px; background: url('../image/sort_both.png') no-repeat center right;}
+table > thead > tr > .sort_asc{min-width: 80px; background: url('../image/sort_asc.png') no-repeat center right;}
+table > thead > tr > .sort_desc{min-width: 80px; background: url('../image/sort_desc.png') no-repeat center right;}
+.input-danger{border-color:red;}
+
+
+
+
