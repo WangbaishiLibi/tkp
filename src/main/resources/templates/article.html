@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="/res/assets/i/favicon.png">
+    <link rel="stylesheet" href="/res/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/res/css/common.css" />
+    <style>
+        body{width:100%; margin: 0px; position: relative;}
+        .content .title{text-align: center; margin-top: 20px;}
+        .content .title .info{color: #5a5a5a; font-size: 13px;}
+        .content .title .info > span{margin-right: 10px;}
+        .content .desc{max-width: 600px; margin: auto;}
+        .content .detail{max-width: 1000px; margin: auto;}
+    </style>
+</head>
+<body>
+    <div id="head" th:include="head"></div>
+    <div class="am-container content">
+
+        <div class="title">
+            <h2 th:text="${view.article.title}"></h2>
+            <div class="info">
+                所属目录：<span th:text="${view.article.lev1Title}"></span>
+                <span th:text="${view.article.lev2Title}"></span>
+                <span th:text="${view.article.lev3Title}"></span>
+                更新时间：<span th:text="${#dates.format(view.article.updateTime, 'yyyy-MM-dd hh:mm:ss')}"></span>
+            </div>
+        </div>
+
+        <div class="desc" th:utext="${view.article.abstr}">
+
+        </div>
+
+        <div class="detail" th:utext="${view.article.content}">
+
+        </div>
+
+
+        <div id="foot" th:include="foot"></div>
+    </div>
+
+    <script src="/res/assets/js/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="/res/assets/js/amazeui.min.js"></script>
+    <script src="/res/dist/js/layer.js"></script>
+    <script src="/res/js/vue.min.js"></script>
+    <script src="/res/dist/js/WebUtil.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Landing Page | Amaze UI Example</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="alternate icon" type="image/png" href="../res/assets/i/favicon.png">
+		<link rel="stylesheet" href="../res/css/common.css" />
+		<link rel="stylesheet" href="../res/css/login.css" />
+		<script src="../res/assets/js/jquery.min.js"></script>
+		<script src="../res/dist/js/WebUtil.js"></script>
+		<style type="text/css">
+	        body, td, th {font-family: "Source Sans Pro", sans-serif;}
+	        body {     background-color: #2B2B2B;  }
+	        #error_info{color:red; margin: 10px;}
+	    </style>
+	</head>
+<body>
+	<div class="wrapper">
+	    <!--登录页面-->
+	    <div class="container">
+	        <h1>Welcome</h1>
+	        <form class="form" name="login" action="../login">
+	            <input type="text" name="username" placeholder="用户名">
+	            <input type="password" name="password" placeholder="密码">
+	            <button type="reset" id="reset-button">重置</button>
+	            <button type="submit" id="login-button">登录</button>
+	            <div id="error_info"></div>
+	        </form>
+	    </div>
+	    <!--背景动画-->
+	    <ul class="bg-bubbles">
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	    </ul>
+	
+	</div>
+
+	<script type="text/javascript">
+		var returnUrl = "index.html";
+	
+		$(function(){
+			$('#login-button').click(function (event) {
+		        event.preventDefault();
+		        login();
+		    });
+			
+			var rnUrl = web.getUrlParam("returnUrl");
+			if(rnUrl) returnUrl = rnUrl;
+		})
+		
+	    
+	    function login(){
+	    	$.ajax({
+	            url: "../login",
+	            type : "POST",
+	            data : new FormData(document.login),	//$modal.find("form").serialize()
+	            contentType : false, //这两个参数需要被定义，否则报错
+	            processData : false,
+	            success : function(data){
+	                if(data.res){
+	                	$('form').fadeOut(500);
+	                    $('.wrapper').addClass('form-success');
+	                    setTimeout(function(){
+	                    	window.location = returnUrl;
+	                    	localStorage.logined = true;
+	                    }, 1000);
+	                }else{
+	                	$("#error_info").text(data.msg);
+	                }
+	            },
+	            dataType : "json",
+	            error : function(data){
+	            	$("#error_info").text("提交出错！");
+	            }
+	        });
+	    }
+	</script>
+</body>
+</html>

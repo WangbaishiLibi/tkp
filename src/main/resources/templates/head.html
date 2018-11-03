@@ -1,0 +1,138 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<header class="am-topbar am-topbar-fixed-top">
+			<style type="text/css">
+				#userInfo .info{vertical-align: middle;  height: 18px;  display: inline-block;}
+				.amz-toolbar {
+					position: fixed;
+					right: 10px;
+					bottom: 90px;
+					z-index: 999;
+					width: 50px;
+				}
+			</style>
+			<div class="">
+				<h1 class="am-topbar-brand">
+		      		<a class="am-icon-home" href="index.html">规章学习小助手</a>
+		    	</h1>
+
+				<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only" data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+		        class="am-icon-bars"></span></button>
+
+				<div class="am-collapse am-topbar-collapse" id="collapse-head">
+					<ul class="am-nav am-nav-pills am-topbar-nav">
+						<li>
+							<a href="index.html">首页</a>
+						</li>
+						<li><a href="search.html">规章搜索</a></li>
+						<li><a href="question.html">题库训练</a></li>
+						<li><a href="recite.html">记忆学习</a></li>
+						<li><a href="testpaper.html">试卷模拟</a></li>
+						<li class="am-disabled"><a href="blank.html">知识体系</a></li>
+						<li class="am-disabled"><a href="blank.html">专业词库</a></li>
+						<li class="am-dropdown" data-am-dropdown>
+							<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+								选项<span class="am-icon-caret-down"></span>
+							</a>
+							<ul class="am-dropdown-content">
+								<li>
+									<a  href="person_center.html">个人中心</a>
+									<a  href="depart_center.html">部门中心</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div id="userInfo">
+						<div class="am-topbar-right">
+							<button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</button>
+						</div>
+	
+						<div class="am-topbar-right">
+							<button id="btn_login" onclick="window.location='login.html?returnUrl='+window.location.pathname"
+								class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div class="amz-toolbar" id="amz-toolbar">
+			<a href="#top" title="回到顶部" data-am-smooth-scroll="{position: 0, speed: 1500}" class="am-icon-btn am-icon-arrow-up"></a>
+			<a href="" title="常见问题" class="am-icon-faq am-icon-btn am-icon-question-circle"></a>
+			<div style="display: none">
+				<div id="advice">
+					<div style="position: relative">
+						<i style="left: 224px; top:8px;" class="layui-layer-ico layui-layer-ico6"></i>
+						<label>感谢您的问题或意见，<br><span style="margin-left: 60px;">&nbsp;</span>  我们会认真改进！</label>
+					</div>
+					<textarea style="width: 300px; height: 100px; border: 1.5px solid rgb(94, 185, 94);border-radius: 8px;"></textarea>
+				</div>
+			</div>
+		</div>
+
+
+		<script>
+			var store = localStorage;
+			
+			function initHead(i){
+				$(".am-dropdown").dropdown();
+				$("#collapse-head > ul > li").eq(i).addClass("am-active");
+
+
+				$("#amz-toolbar").find("a").eq(0).hide();
+				$("#amz-toolbar").find("a").eq(1).click(function(){
+					layer.confirm($("#advice").html(), {id:'advice_info', title:'有疑问或意见？'}, function(index){
+						$.getJSON("../user/advice", {info:$("#advice_info").find("textarea").val()}, function (data) {
+							if(data.res){
+								layer.msg("感谢参与");
+							}
+						});
+						layer.close(index);
+					});
+					return false;
+				});
+				$(document).scroll(function(){
+					if($(this).scrollTop()>10){
+						$("#amz-toolbar").find("a").eq(0).show();
+					}else{
+						$("#amz-toolbar").find("a").eq(0).hide();
+					}
+				});
+
+				
+				if(layer){
+					$(".am-dropdown-content li").click(function(){
+						layer.msg("即将上线，敬请关注！");
+					})
+				}
+				
+
+				$.getJSON("../userInfo", function(data){
+					if(data.username)
+						loadUserInfo(data);
+					else
+						delete window.user;
+				//	store.userInfo = JSON.stringify(data);
+				})
+
+			}
+			
+			function loadUserInfo(data){
+				window.user = data;
+				$("#userInfo").empty();
+				$("#userInfo").append('<div class="am-topbar-right"><span class="info" >当前用户：' + data.username + '</span>' 
+						+ '&nbsp;&nbsp;<button class="am-btn am-topbar-btn am-btn-sm am-icon-power-off" onclick="logout()">'
+						+ '登出</button></div>');
+				$("#userInfo a").click(function(){store.logined = false;})
+			}
+			
+			function logout(){
+				store.logined = false;
+				store.removeItem("userInfo");
+				window.location = "../logout";
+			}
+		</script>
+	</body>
+</html>

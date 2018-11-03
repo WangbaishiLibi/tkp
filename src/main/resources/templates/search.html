@@ -1,0 +1,119 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="/res/assets/i/favicon.png">
+    <link rel="stylesheet" href="/res/assets/css/amazeui.min.css" />
+    <link rel="stylesheet"  href="/res/dist/css/summernote.css"  />
+    <link rel="stylesheet" href="/res/css/common.css" />
+    <link rel="stylesheet" href="/res/css/search.css" />
+</head>
+<body>
+<div id="head" th:include="head"></div>
+
+<div class="am-container content">
+    <div id="welcome_info" class="am-u-lg-12">
+        <h1 class="get-title">规章学习小助手 - 让你的学习更轻松！</h1>
+        <p>开始学习吧~</p>
+    </div>
+    <div class="am-u-lg-9">
+        <div style="margin: 10px;">
+            <div class="key-types">
+                <span class="active">全部</span>|<span>规章</span>|<span>词条</span>|<span>题目</span>
+            </div>
+
+            <div style="width:85%; margin: auto;" class="am-input-group am-input-group-primary">
+                <input id="btn_key" type="text" class="am-form-field" placeholder="输入关键字">
+                <span class="am-input-group-btn">
+                    <button id="btn_search" class="am-btn am-btn-primary" type="button" style="width: 80px;"><span class="am-icon-search"></span></button>
+                </span>
+            </div>
+        </div>
+
+
+        <div id="main">
+
+            <!--搜索页-->
+            <div class="am-tab-panel">
+                <div>
+                    <div style="width:85%; margin: auto;" class="am-list-news am-list-news-default">
+                        <div class="am-list-news-bd">
+                            <div class="info">{{info}}</div>
+                            <ul id="result_list" class="am-list" >
+                                <li data-id={{res.id}} class="am-g am-list-item-desced" v-for="res in resultList">
+                                    <div class="am-list-item-hd ">
+                                        <div class="title">
+                                            <a :href="res.link" target="_blank">
+                                                <label v-html="handle(res.title)"></label>
+                                                &nbsp;【{{res.lev1Title}}&nbsp;-&nbsp;{{res.lev2Title}}&nbsp;-&nbsp;{{res.lev3Title}}】
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="am-list-item-text">
+                                        <div v-html="handle(res.abstr)"></div>
+                                    </div>
+                                    <div class="am-list-news-ft am-fr">
+                                        <span v-html="'来源：' + res.origin"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span>更新于：{{handleTime(res.updateTime)}}</span>
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="am-u-lg-3">
+
+        <div th:include="common::user_info"></div>
+
+        <div th:include="common::common_search"></div>
+
+        <div th:include="common::user_search"></div>
+
+        <div th:include="common::user_collection"></div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<div id="foot" th:include="foot"></div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/res/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/res/assets/js/amazeui.min.js"></script>
+<script src="/res/dist/js/layer.js"></script>
+<script src="/res/js/vue.min.js"></script>
+<script type="text/javascript" src="/res/dist/js/summernote.js"></script>
+<script src="/res/dist/js/WebUtil.js"></script>
+<script src="/res/js/search.js"></script>
+
+
+</body>
+</html>

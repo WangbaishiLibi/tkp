@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Landing Page | Amaze UI Example</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="alternate icon" type="image/png" href="../res/assets/i/favicon.png">
+		<link rel="stylesheet" href="../res/assets/css/amazeui.min.css" />
+		<link rel="stylesheet" href="../res/css/common.css">
+		<script type="text/javascript" src="../res/assets/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../res/assets/js/amazeui.min.js" ></script>
+		<script type="text/javascript" src="../res/dist/js/layer.js"></script>
+		<script type="text/javascript" src="../res/dist/js/WebUtil.js"></script>
+		<style>
+			*{font-family: "微软雅黑";}
+
+			.headicon{height: 100%; background: url('../res/img/mark.png') no-repeat;}
+			
+			.div1{ text-align: center; color: white; background-image: url('../res/img/back.png');}
+			.div1 > p{font-size: 32px; padding: 20px;}
+			.div1 > h4{margin-top: -10px; margin-bottom: 40px;}
+			.div1 .front{margin: auto}
+
+			.div2{}
+			.div2 > .outer{height: 340px;     margin: 10px auto;}
+			.div2 .outer .inner{width: 125px; height: 150px; margin: auto; background: url('../res/img/liu.png') no-repeat;}
+			.div2 .outer .inner >img{margin:30px;}
+			.div2 .outer p{text-align: center;}
+			.div2 .outer .title{font-size: 26px;}
+			
+			.div3{width: 100%; height: 500px; background-image: url('../res/img/part.png'); color: white;} 
+			.div3 .info{padding: 120px;}
+			
+			.div4 img{margin: 10px 0px;}
+		</style>
+	</head>
+	<body>
+		
+		<div id="head"></div>
+		<div class="am-container content">
+			
+			<div class="am-header" style="display: none">
+<!-- 				<div class="am-u-sm-3 headicon"></div> -->
+<!-- 				<div class="am-u-sm-6"> -->
+<!-- 					<ul class="am-nav am-nav-pills"> -->
+<!-- 						<li><a href="">首页</a></li> -->
+<!-- 						<li><a href="search.html">规章搜索</a></li> -->
+<!-- 						<li><a href="search.html">题库训练</a></li> -->
+<!-- 						<li><a href="recite.html">题库训练</a></li> -->
+<!-- 						<li><a href="#">关于我们</a></li> -->
+<!-- 						<li class="am-disabled"><a href="#">知识平台</a></li> -->
+<!-- 					</ul>	 -->
+					
+<!-- 				</div> -->
+<!-- 				<div class="am-u-sm-3"> -->
+<!-- 					<div class="am-topbar-right"> -->
+<!-- 						<button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</button> -->
+<!-- 					</div> -->
+<!-- 					<div class="am-topbar-right"> -->
+<!-- 						<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+			</div>
+			
+			<div class="div1  am-img-responsive">
+				<p class="am-animation-slide-top am-animation-delay-1">为您构建大型职教平台，提供专业的职教服务</p>
+				<h4 class="am-animation-slide-top am-animation-delay-2">丰富的知识体系&nbsp;·&nbsp;海量题库&nbsp;·&nbsp;专家解释</h4>
+				<a type="button" class="am-btn am-btn-primary am-round" href="index.html" >立即前往</a>
+				<div class="front">
+					<img style="margin: auto;" class="am-img-responsive" src="../res/img/front.png" />
+				</div>
+			</div>
+
+			<div class="div2 am-u-lg-12">
+				<div class="am-u-lg-4 outer">
+					<div class="inner"><img src="../res/img/search.png" style="margin-top: 40px;"/></div>
+					<p class="title">知识体系搜索</p>
+					<p class="intro">开放、可扩展的知识体系平台<br>不断引入新的规章体系，提供更加完备的知识服务<br>行业专家讲解规章难点</p>
+				</div>
+				<div class="am-u-lg-4 outer">
+					<div class="inner"><img src="../res/img/question.png"style="margin-top: 40px;"/></div>
+					<p class="title">专业题库&nbsp;·&nbsp;个性定制</p>
+					<p class="intro">依据最新知识设计合理题目<br>为用户提供个性化学习服务，为部门提供职工学习统计<br>推陈出新，紧扣时代前沿</p>
+				</div>
+				<div class="am-u-lg-4 outer">
+					<div class="inner"><img src="../res/img/recite.png"/></div>
+					<p class="title">记忆学习</p>
+					<p class="intro">背诵语音识别<br>辅助您更快掌握知识点<br>记录您学习的每一次进步</p>
+				</div>
+			</div>
+			
+			<div class="div4 am-u-lg-12">
+				<div data-am-widget="slider" class="am-slider am-slider-b1" data-am-slider='{&quot;controlNav&quot;:false}' data-am-flexslider >
+				  	<ul class="am-slides">
+						<li><img src="../res/img/lb1.png"></li>
+						<li><img src="../res/img/lb2.png"></li>
+						<li><img src="../res/img/lb3.png"></li>
+					</ul>
+				</div>
+			</div>
+			
+
+			
+
+			
+			<div class="div3 am-u-lg-12 am-img-responsive">
+				<div class="info">
+					<p style="font-size: 25px;">学海无涯，学无止境</p>
+					<p>无论您来自哪个行业<br>期待您的交流，期待您的指点</p>
+					<a type="button" class="am-btn am-btn-default  am-round">加入我们</a>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div id="foot"></div>
+		
+		<script>
+			$(function() {
+				$("#head").load("head.html", function(){
+					initHead(0);
+				});
+				$("#foot").load("foot.html");
+			});
+		
+			
+		</script>
+		
+		
+
+	</body>
+</html>
