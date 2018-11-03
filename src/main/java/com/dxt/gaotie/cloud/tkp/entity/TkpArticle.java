@@ -17,16 +17,6 @@ public class TkpArticle extends SearchModel{
     private Integer likes = 0;
     private Boolean able;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "title")
@@ -58,6 +48,20 @@ public class TkpArticle extends SearchModel{
     public void setLink(String link) {
         this.link = link;
     }
+
+    @Transient
+    @Override
+    public String getOrigin() {
+        if(origin != null)  return origin;
+        origin = "本地规章记录";
+        return origin;
+    }
+
+    @Override
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
 
     @Basic
     @Column(name = "content")

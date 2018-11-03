@@ -18,16 +18,6 @@ public class TkpDictionary extends SearchModel{
     private Timestamp updateTime;
     private Boolean able;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "title")

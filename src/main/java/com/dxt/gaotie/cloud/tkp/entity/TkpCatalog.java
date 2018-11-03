@@ -13,28 +13,19 @@ public class TkpCatalog extends SearchModel{
     private Integer seq = 0;
     private String type;
     private Integer parentId;
-    private Integer bookId;
+    private TkpBook book;
 
     public TkpCatalog() {
     }
 
-    public TkpCatalog(String title, String type, Integer bookId, Integer parentId) {
-        this.title = title;
-        this.type = type;
-        this.bookId = bookId;
-        this.parentId = parentId;
-    }
+//    public TkpCatalog(String title, String type, Integer bookId, Integer parentId) {
+//        this.title = title;
+//        this.type = type;
+//        this.bookId = bookId;
+//        this.parentId = parentId;
+//    }
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "title")
@@ -107,15 +98,32 @@ public class TkpCatalog extends SearchModel{
         this.parentId = parentId;
     }
 
-    @Basic
-    @Column(name = "book_id")
-    public Integer getBookId() {
-        return bookId;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    public TkpBook getBook() {
+        return book;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
+    public void setBook(TkpBook book) {
+        this.book = book;
     }
+
+    @Transient
+    @Override
+    public String getOrigin() {
+        if(origin != null)  return origin;
+        origin = "本地规章目录";
+        if(book != null){
+            origin += "<a href=\""+book.getUrl()+"\" target=\"_blank\"></a>";
+        }
+        return origin;
+    }
+
+    @Override
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -126,7 +134,6 @@ public class TkpCatalog extends SearchModel{
 
         if (id != that.id) return false;
         if (abstr != null ? !abstr.equals(that.abstr) : that.abstr != null) return false;
-        if (bookId != null ? !bookId.equals(that.bookId) : that.bookId != null) return false;
         if (parentId != null ? !parentId.equals(that.parentId) : that.parentId != null) return false;
         if (seq != null ? !seq.equals(that.seq) : that.seq != null) return false;
         if (tag != null ? !tag.equals(that.tag) : that.tag != null) return false;
@@ -145,7 +152,6 @@ public class TkpCatalog extends SearchModel{
         result = 31 * result + (seq != null ? seq.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (parentId != null ? parentId.hashCode() : 0);
-        result = 31 * result + (bookId != null ? bookId.hashCode() : 0);
         return result;
     }
 }

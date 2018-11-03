@@ -23,16 +23,7 @@ public class VTkpArticle extends SearchModel{
     private String lev3Title;
     private int lev3Id;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "title")
@@ -114,16 +105,31 @@ public class VTkpArticle extends SearchModel{
         this.likes = likes;
     }
 
-
     @Transient
     @Override
     public String getLink() {
-        return "/article/" + id;
+        return link == null ? "/article/" + id : link;
     }
 
     @Override
     public void setLink(String link) {
         this.link = link;
+    }
+
+    @Transient
+    @Override
+    public String getOrigin() {
+        if(origin != null)  return origin;
+        origin = "本地规章记录";
+        if(book != null){
+            origin += "<a href=\""+book.getUrl()+"\" target=\"_blank\"></a>";
+        }
+        return origin;
+    }
+
+    @Override
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
 

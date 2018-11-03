@@ -2,8 +2,7 @@ package com.dxt.gaotie.cloud.tkp.entity;/**
  * Created by admin on 2018/11/2.
  */
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -15,6 +14,7 @@ import java.sql.Timestamp;
  * @ version： V1.0.0
  * @ CopyRight：武汉点线通软件有限责任公司
  */
+@MappedSuperclass
 public abstract class SearchModel implements Serializable{
 
     protected int id;
@@ -22,14 +22,22 @@ public abstract class SearchModel implements Serializable{
     protected String abstr;
 
     protected String link;
+    protected String origin;
 
     protected Timestamp createTime;
     protected Timestamp updateTime;
 
 
-    public abstract int getId();
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
-    public abstract void setId(int id) ;
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public abstract String getTitle() ;
 
@@ -42,6 +50,10 @@ public abstract class SearchModel implements Serializable{
     public abstract String getLink() ;
 
     public abstract void setLink(String link) ;
+
+    public abstract String getOrigin() ;
+
+    public abstract void setOrigin(String origin) ;
 
     @Basic
     @Column(name = "create_time", insertable = false, updatable = false)
