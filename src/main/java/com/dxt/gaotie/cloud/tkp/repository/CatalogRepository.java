@@ -14,4 +14,9 @@ public interface CatalogRepository extends JpaRepository<TkpCatalog, Integer>{
     @Query("select c from TkpCatalog c where c.title like ?1 order by c.seq")
     public List<TkpCatalog> findByTitle(String title);
 
+    @Query("select c from TkpCatalog c where c.parentId=?1 order by c.seq")
+    public List<TkpCatalog> findByParent(Integer parentId);
+
+    @Query("select c from TkpCatalog c where c.parentId=?1 and c.book.id=?2 order by c.seq")
+    public List<TkpCatalog> findByParentAndBook(Integer parentId, Integer bookId);
 }

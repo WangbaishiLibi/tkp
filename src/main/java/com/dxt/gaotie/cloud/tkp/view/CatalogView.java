@@ -1,6 +1,9 @@
-package com.dxt.gaotie.cloud.tkp.view;/**
- * Created by admin on 2018/11/2.
- */
+package com.dxt.gaotie.cloud.tkp.view;
+
+
+import com.dxt.gaotie.cloud.tkp.entity.TkpCatalog;
+
+import java.util.List;
 
 /**
  * @ ClassName: CatalogView
@@ -11,4 +14,7 @@ package com.dxt.gaotie.cloud.tkp.view;/**
  * @ CopyRight：武汉点线通软件有限责任公司
  */
 public class CatalogView {
+
+    public TkpCatalog catalog;
+    public List<TkpCatalog> parents;
 }

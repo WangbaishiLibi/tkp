@@ -46,7 +46,7 @@ public class IndexController {
 
     @RequestMapping("/catalog/{id}")
     public String catalog(@PathVariable("id")Integer id, Model model){
-        model.addAttribute(catalogService.catalogView(id));
+        model.addAttribute("view", catalogService.catalogView(id));
         return "catalog";
     }
 
