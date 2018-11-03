@@ -2,6 +2,8 @@ package com.dxt.gaotie.cloud.tkp.view;/**
  * Created by admin on 2018/11/2.
  */
 
+import com.dxt.gaotie.cloud.tkp.entity.VTkpArticle;
+
 /**
  * @ ClassName: ArticleView
  * @ Description: TODO
@@ -11,4 +13,6 @@ package com.dxt.gaotie.cloud.tkp.view;/**
  * @ CopyRight：武汉点线通软件有限责任公司
  */
 public class ArticleView {
+    public VTkpArticle article;
+
 }

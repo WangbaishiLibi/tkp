@@ -2,6 +2,7 @@ package com.dxt.gaotie.cloud.tkp.service;/**
  * Created by admin on 2018/11/2.
  */
 
+import com.dxt.gaotie.cloud.tkp.dao.EntityDao;
 import com.dxt.gaotie.cloud.tkp.entity.SearchModel;
 import com.dxt.gaotie.cloud.tkp.repository.CatalogRepository;
 import com.dxt.gaotie.cloud.tkp.repository.DictionaryRepository;
@@ -28,6 +29,9 @@ public class SearchService {
     @Autowired
     VArticleRepository articleRepository;
 
+    @Autowired
+    EntityDao entityDao;
+
 
     /**
      * @Method: search
@@ -48,9 +52,12 @@ public class SearchService {
 
         //数据库检索
         String dbKey = "%" + key + "%";
-        searchModels.addAll(dictionaryRepository.findByTitle(dbKey));
-        searchModels.addAll(catalogRepository.findByTitle(dbKey));
-        searchModels.addAll(articleRepository.findByKey(dbKey));
+        String hql = "select d from TkpDictionary d where d.title like '"+dbKey+"' order by d.weight desc, d.updateTime desc";
+        searchModels.addAll(entityDao.findList(hql, 0, 20));
+        hql = "select c from TkpCatalog c where c.title like '"+dbKey+"' order by c.seq";
+        searchModels.addAll(entityDao.findList(hql, 0, 20));
+        hql = "select a from VTkpArticle a where a.title like '"+dbKey+"' or a.abstr like '"+dbKey+"' order by a.views desc, a.updateTime desc";
+        searchModels.addAll(entityDao.findList(hql, 0, 20));
 
         return searchModels;
     }
