@@ -39,7 +39,7 @@ public class IndexController {
 
     @RequestMapping("/article/{id}")
     public String article(@PathVariable("id")Integer id, Model model){
-        model.addAttribute(articleService.articleView(id));
+        model.addAttribute("view", articleService.articleView(id));
         return "article";
     }
 

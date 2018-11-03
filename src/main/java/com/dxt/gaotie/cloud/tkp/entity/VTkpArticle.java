@@ -122,7 +122,7 @@ public class VTkpArticle extends SearchModel{
         if(origin != null)  return origin;
         origin = "本地规章记录";
         if(book != null){
-            origin += "<a href=\""+book.getUrl()+"\" target=\"_blank\"></a>";
+            origin = "<a href=\""+book.getUrl()+"\" target=\"_blank\">"+origin+"</a>";
         }
         return origin;
     }

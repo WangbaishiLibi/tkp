@@ -47,10 +47,12 @@ public abstract class SearchModel implements Serializable{
 
     public abstract void setAbstr(String abstr) ;
 
+    @Transient
     public abstract String getLink() ;
 
     public abstract void setLink(String link) ;
 
+    @Transient
     public abstract String getOrigin() ;
 
     public abstract void setOrigin(String origin) ;
