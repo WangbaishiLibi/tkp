@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="/res/assets/i/favicon.png">
+    <link rel="stylesheet" href="/res/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/res/css/common.css" />
+    <style>
+        .am-list{margin: 0px; padding-left: 20px;}
+        .am-list>li>a{padding: 0.3rem;}
+    </style>
 </head>
 <body>
+    <div id="head" th:include="head"></div>
+    <div class="am-container content">
 
+        <div class="super_catalog">
+
+        </div>
+        <div class="catalog">
+            <ul id="tree_menu" class="am-list">
+
+            </ul>
+        </div>
+
+        <div class="article_list">
+            <ul>
+
+            </ul>
+        </div>
+
+
+        <div id="foot" th:include="foot"></div>
+    </div>
+
+    <script src="/res/assets/js/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="/res/assets/js/amazeui.min.js"></script>
+    <script src="/res/dist/js/layer.js"></script>
+    <script src="/res/js/vue.min.js"></script>
+    <script src="/res/dist/js/WebUtil.js"></script>
+    <script th:inline="javascript">
+        $(function(){
+            var catalog_id = [[${view.catalog.id}]];
+            $.getJSON("/cat/catalogTree", {parentId:catalog_id}, function(data){
+                listChildren($("#tree_menu"), data[0]);
+            })
+
+
+
+        })
+
+
+        function listChildren($dom, node){
+            var title = node.text ? node.text : "标题";
+            $dom.append('<li><a href="/catalog/'+node.id+'">'+title+'</a><ul class="am-list"></ul></li>');
+            if(node.children && node.children.length){
+                for(var i in node.children){
+                    listChildren($dom.children('li').children('ul'), node.children[i]);
+                }
+            }
+
+        }
+
+    </script>
 </body>
 </html>

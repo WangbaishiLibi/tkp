@@ -11,7 +11,6 @@ public class Node implements Serializable{
 	private String data;
 	private String icon;
 	private List<Node> children;
-	private List<Node> nodes;
 
 
 
@@ -22,6 +21,7 @@ public class Node implements Serializable{
 		this.data = data;
 		this.state = "open";
 	}
+
 
 	
 	public String getData() {
@@ -76,11 +76,4 @@ public class Node implements Serializable{
 		this.children = children;
 	}
 
-	public List<Node> getNodes() {
-		return children;
-	}
-
-	public void setNodes(List<Node> nodes) {
-		this.children = nodes;
-	}
 }
