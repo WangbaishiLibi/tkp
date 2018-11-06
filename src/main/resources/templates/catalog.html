@@ -12,27 +12,41 @@
     <link rel="stylesheet" href="/res/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/res/css/common.css" />
     <style>
+        #tree_loading{margin-left: 20px;}
         .am-list{margin: 0px; padding-left: 20px;}
-        .am-list>li>a{padding: 0.3rem;}
+        .am-list .expand{display: inline-block;}
+        .am-list>li>a{padding: 0.3rem; display: inline-block;}
+
+        .article_list{margin-top: 30px;}
     </style>
 </head>
 <body>
     <div id="head" th:include="head"></div>
     <div class="am-container content">
-
-        <div class="super_catalog">
-
+        <div class="super_catalog am-u-lg-12">
+            <div>
+                <label>上级目录：</label>
+                <ol class="am-breadcrumb" style="display: inline-block;">
+                    <li><a th:href="${view.catalog.book.url}" th:text="${view.catalog.book.title}" class="am-icon-book" target="_blank"></a></li>
+                    <li th:each="cat : ${view.parents}"><a th:href="${cat.link}" th:text="${cat.title}"></a></li>
+                </ol>
+            </div>
         </div>
-        <div class="catalog">
-            <ul id="tree_menu" class="am-list">
+        <div class="am-u-lg-4">
+            <div class="catalog">
+                <label>当前目录：</label>
+                <i id="tree_loading" class="am-icon-refresh am-icon-spin"></i>
+                <ul id="tree_menu" class="am-list">
 
-            </ul>
+                </ul>
+            </div>
         </div>
 
-        <div class="article_list">
-            <ul>
-
-            </ul>
+        <div class="am-u-lg-8">
+            <div class="article_list">
+                <ul id="article_list" class="am-list">
+                </ul>
+            </div>
         </div>
 
 
@@ -49,25 +63,49 @@
         $(function(){
             var catalog_id = [[${view.catalog.id}]];
             $.getJSON("/cat/catalogTree", {parentId:catalog_id}, function(data){
-                listChildren($("#tree_menu"), data[0]);
+                $("#tree_loading").hide();
+                listChildren($("#tree_menu"), data[0], 0);
             })
 
-
+            $(document).on("click", ".am-list .expand", function(){
+                if($(this).hasClass("am-icon-minus")){
+                    $(this).parent().find("ul").eq(0).slideUp();
+                }else if($(this).hasClass("am-icon-plus")){
+                    $(this).parent().find("ul").eq(0).slideDown();
+                }
+                $(this).toggleClass("am-icon-minus").toggleClass("am-icon-plus");
+            })
 
         })
 
 
-        function listChildren($dom, node){
+        function listChildren($dom, node, lev){
             var title = node.text ? node.text : "标题";
-            $dom.append('<li><a href="/catalog/'+node.id+'">'+title+'</a><ul class="am-list"></ul></li>');
-            if(node.children && node.children.length){
-                for(var i in node.children){
-                    listChildren($dom.children('li').children('ul'), node.children[i]);
-                }
+            var tmp = lev>0 ? "display:none;" : "";
+            if("节" == node.data){
+                $dom.append('<li class="leaf" onclick="loadArticle('+node.id+')"><a>'+title+'</a></li>');
+            }else{
+                $dom.append('<li class="node"><i></i><a href="/catalog/'+node.id+'">'+title+'</a><ul class="am-list" style="'+tmp+'"></ul></li>');
             }
 
+            if(node.children && node.children.length){
+                var icon = lev>0 ? "am-icon-plus" : "am-icon-minus";
+                $dom.children('li').children("i").attr("class", icon + " expand");
+                for(var i in node.children){
+                    listChildren($dom.children('li').children('ul'), node.children[i], ++lev);
+                }
+            }
         }
 
+        function loadArticle(id){
+            $("#article_list").empty();
+            $.getJSON("/article/getByCatalog", {catalogId:id}, function(data){
+                for(var i in data){
+                    var art = data[i];
+                    $("#article_list").append('<li><a href="/article/'+art[0]+'">'+art[1]+'</a></li>');
+                }
+            })
+        }
     </script>
 </body>
 </html>

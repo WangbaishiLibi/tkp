@@ -2,12 +2,15 @@ package com.dxt.gaotie.cloud.tkp.service;/**
  * Created by admin on 2018/11/2.
  */
 
+import com.dxt.gaotie.cloud.tkp.entity.TkpArticle;
+import com.dxt.gaotie.cloud.tkp.repository.ArticleRepository;
 import com.dxt.gaotie.cloud.tkp.repository.VArticleRepository;
 import com.dxt.gaotie.cloud.tkp.view.ArticleView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * @ ClassName: ArticleService
@@ -22,12 +25,20 @@ import javax.transaction.Transactional;
 public class ArticleService {
 
     @Autowired
-    VArticleRepository articleRepository;
+    VArticleRepository vArticleRepository;
+
+    @Autowired
+    ArticleRepository articleRepository;
 
     public ArticleView articleView(Integer id){
         ArticleView articleView = new ArticleView();
-        articleView.article = articleRepository.findOne(id);
+        articleView.article = vArticleRepository.findOne(id);
         return articleView;
+    }
+
+
+    public List<TkpArticle> getByCatalog(Integer catalogId){
+        return articleRepository.findByCatalog(catalogId);
     }
 
 }

@@ -69,7 +69,7 @@ public class CatalogService {
         List<TkpCatalog> catalogs = catalogRepository.findByParentAndBook(0, book.getId());
         Node bookNode = new Node(String.valueOf(book.getId()), book.getTitle(), book.getUrl(), new ArrayList<Node>());
         for(TkpCatalog catalog : catalogs){
-            bookNode.getChildren().add(new Node(String.valueOf(catalog.getId()), catalog.getTitle(), catalog.getLink(), childrenList(catalog.getId())));
+            bookNode.getChildren().add(new Node(String.valueOf(catalog.getId()), catalog.getTitle(), catalog.getType(), childrenList(catalog.getId())));
         }
         return bookNode;
     }
@@ -79,7 +79,7 @@ public class CatalogService {
         TkpCatalog catalog = catalogRepository.findOne(parentId);
         if(catalog == null)    return root;
 
-        root.add(new Node(String.valueOf(catalog.getId()), catalog.getTitle(), catalog.getLink(), childrenList(catalog.getId())));
+        root.add(new Node(String.valueOf(catalog.getId()), catalog.getTitle(), catalog.getType(), childrenList(catalog.getId())));
 
         return root;
     }
@@ -89,7 +89,7 @@ public class CatalogService {
         List<Node> children = new ArrayList<>();
         List<TkpCatalog> catalogs = catalogRepository.findByParent(parentId);
         for(TkpCatalog catalog : catalogs){
-            children.add(new Node(String.valueOf(catalog.getId()), catalog.getTitle(), catalog.getLink(), childrenList(catalog.getId())));
+            children.add(new Node(String.valueOf(catalog.getId()), catalog.getTitle(), catalog.getType(), childrenList(catalog.getId())));
         }
         return children;
     }
