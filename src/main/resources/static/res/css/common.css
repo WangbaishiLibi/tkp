@@ -1,6 +1,6 @@
 
 
-.content{margin-top: 50px; min-height: 700px;  max-width: 100%;    padding: 0px;}
+.content{ min-height: 700px;  max-width: 100%;    padding: 0px;}
 .div-panel{margin:10px; background-color: wheat; padding: 10px; border-radius: 10px;}
 .div-panel1{background-color: #5eb95e; padding: 10px; color: rgb(216, 249, 118);}
 .div-panel2{ background: rgba(245, 222, 179, 0.29); padding:10px;}

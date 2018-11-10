@@ -16,6 +16,9 @@
         .am-list{margin: 0px; padding-left: 20px;}
         .am-list .expand{display: inline-block;}
         .am-list>li>a{padding: 0.3rem; display: inline-block;}
+        .am-list .active{background: #1492ff;}
+        .am-list .active:hover{background: #0074da;}
+        .am-list .active a{color: white;}
 
         .article_list{margin-top: 30px;}
     </style>
@@ -83,7 +86,7 @@
             var title = node.text ? node.text : "标题";
             var tmp = lev>0 ? "display:none;" : "";
             if("节" == node.data){
-                $dom.append('<li class="leaf" onclick="loadArticle('+node.id+')"><a>'+title+'</a></li>');
+                $dom.append('<li class="leaf" onclick="loadArticle(this, '+node.id+')"><a>'+title+'</a></li>');
             }else{
                 $dom.append('<li class="node"><i></i><a href="/catalog/'+node.id+'">'+title+'</a><ul class="am-list" style="'+tmp+'"></ul></li>');
             }
@@ -97,7 +100,9 @@
             }
         }
 
-        function loadArticle(id){
+        function loadArticle(dom, id){
+            $("#tree_menu").find(".leaf").removeClass("active");
+            $(dom).addClass("active");
             $("#article_list").empty();
             $.getJSON("/article/getByCatalog", {catalogId:id}, function(data){
                 for(var i in data){

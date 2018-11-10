@@ -16,8 +16,10 @@
         .content .title{text-align: center; margin-top: 20px;}
         .content .title .info{color: #5a5a5a; font-size: 13px;}
         .content .title .info > span{margin-right: 10px;}
-        .content .desc{max-width: 600px; margin: auto;}
+        .content .desc{max-width: 900px; margin:20px auto; background-color: wheat; padding: 5px;}
         .content .detail{max-width: 1000px; margin: auto;}
+
+
     </style>
 </head>
 <body>
@@ -34,8 +36,8 @@
             </div>
         </div>
 
-        <div class="desc" th:utext="${view.article.abstr}">
-
+        <div class="desc">
+            <label>摘要：</label><p th:utext="${#strings.substring(view.article.abstr, 0, 200)}" style="display: inline"></p>
         </div>
 
         <div class="detail" th:utext="${view.article.content}">

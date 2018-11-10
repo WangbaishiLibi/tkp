@@ -13,6 +13,7 @@
         <class>com.dxt.gaotie.cloud.tkp.entity.TkpCatalog</class>
         <class>com.dxt.gaotie.cloud.tkp.entity.TkpDictionary</class>
         <class>com.dxt.gaotie.cloud.tkp.entity.VTkpArticle</class>
+        <class>com.dxt.gaotie.cloud.tkp.entity.UUser</class>
         <properties>
             <property name="toplink.jdbc.url" value="jdbc:mysql://120.78.13.20:3306/tkp"/>
             <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

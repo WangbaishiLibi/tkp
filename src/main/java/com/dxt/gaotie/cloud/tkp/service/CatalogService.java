@@ -36,6 +36,7 @@ public class CatalogService {
     public CatalogView catalogView(Integer id){
         CatalogView catalogView = new CatalogView();
         catalogView.catalog = catalogRepository.findOne(id);
+        if(catalogView == null) return catalogView;
         catalogView.parents = new ArrayList<>();
         int parentId = catalogView.catalog.getParentId();
         int i = 6;
